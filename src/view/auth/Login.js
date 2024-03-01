@@ -14,7 +14,7 @@ const Login = () => {
           <p className="desciption">Get Premier Access to Raya and the Last Dragon for an additional fee the price of Disney+ and The Disney Bundle will increse by $1 </p>
           <img
             src="/images/cta-logo-two.png"
-            className="mt-4 mb-8 max-w-[600px] inline-block w-full"
+            className="mt-4 mb-3 max-w-[600px] inline-block w-full"
             alt="logo"
           />
         </div>
