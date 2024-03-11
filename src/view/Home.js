@@ -12,9 +12,9 @@ const Home = () => {
       <ImgSlider />
       <Viewers />
       <Recommends />
-      <NewBrianView/>
-      <Trending/>
-      <Original/>
+      <NewBrianView />
+      <Trending />
+      <Original />
     </main>
   );
 };
