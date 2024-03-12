@@ -121,32 +121,6 @@ export const getSinglePost = (userId) => async (dispatch) => {
   }
 };
 
-export const getVideo = (userId) => async (dispatch) => {
-  try {
-    dispatch(setIsLoading(true));
-    const snapshot = await firebase
-      .firestore()
-      .collection("posts")
-      .doc(userId)
-      .get();
-
-    if (snapshot.exists) {
-      const data = snapshot.data();
-      if (Array.isArray(data.video)) {
-        dispatch({ type: "GET_VIDEO", payload: data.video });
-      } else {
-        dispatch({ type: "GET_VIDEO", payload: [data.video] });
-      }
-    } else {
-    }
-
-    dispatch(setIsLoading(false));
-  } catch (error) {
-    dispatch(setIsLoading(false));
-    alert(error.message);
-  }
-};
-
 export const setIsLoading = (val) => async (dispatch) => {
   dispatch({
     type: "SET_IS_LOADING",

@@ -5,7 +5,6 @@ const initialState = {
     original_Posts: null,
     single_Post: null,
     isLoading: false,
-    video: null,
   };
   const postingReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -38,12 +37,6 @@ const initialState = {
                   ...state,
                   single_Post: action.payload
                 };
-
-                case "GET_VIDEO":
-                  return {
-                    ...state,
-                    video: action.payload
-                  };
 
               case "SET_IS_LOADING":
                 return {

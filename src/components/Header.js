@@ -69,9 +69,11 @@ const Header = () => {
           </span>
         </Link>
       </div>
+      <Link to="/login">
       <button className="bg-black py-3 px-6 uppercase tracking-wide border border-solid border-gray-200 rounded-md hover:bg-white hover:text-black hover:border-transparent font-bold">
         Login
       </button>
+      </Link>
     </div>
   );
 };
