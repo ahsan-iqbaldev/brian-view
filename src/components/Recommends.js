@@ -19,7 +19,7 @@ const Recommends = () => {
           <svg
             aria-hidden="true"
             role="status"
-            class="inline mr-3 w-8 h-8 text-white animate-spin"
+            className="inline mr-3 w-8 h-8 text-white animate-spin"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

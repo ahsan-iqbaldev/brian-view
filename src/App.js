@@ -1,5 +1,6 @@
-import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
-import { useState, useEffect } from "react"; 
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import Login from "./view/auth/Login";
 import Header from "./components/Header";
 import Home from "./view/Home";
@@ -7,25 +8,32 @@ import Detail from "./components/Details";
 import VideoPlayer from "./components/VideoPlayer";
 
 function App() {
-  const params = useParams();
-  const [hideHeader, setHideHeader] = useState(false);
+  const ProtectedRoute = ({ element, path }) => {
+    const { uid } = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    if (params.id && window.location.pathname.startsWith("/video-player")) {
-      setHideHeader(true); 
-    } else {
-      setHideHeader(false); 
+    if (!uid && path !== "/login") {
+      return <Navigate to="/login" />;
     }
-  }, [params.id]);
+
+    return element;
+  };
 
   return (
     <BrowserRouter>
-      {!hideHeader && <Header />}
+      <Header />
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/details/:id" element={<Detail />} />
-        <Route path="/video-player/:id" element={<VideoPlayer />} />
+        
+        {/* Protect other routes */}
+        <Route path="/" element={<ProtectedRoute element={<Home />} />} />
+        <Route
+          path="/details/:id"
+          element={<ProtectedRoute element={<Detail />} />}
+        />
+        <Route
+          path="/video-player/:id"
+          element={<ProtectedRoute element={<VideoPlayer />} />}
+        />
       </Routes>
     </BrowserRouter>
   );
