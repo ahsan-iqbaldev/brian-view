@@ -12,6 +12,7 @@ const login = (navigate) => async (dispatch) => {
 
     await firebase.firestore().collection('users').doc(uid).set({
         email: email,
+        role: "guest",
       });
 
     dispatch({ type: 'LOGIN_SUCCESS', payload: { email, uid } });
